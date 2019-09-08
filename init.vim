@@ -15,6 +15,7 @@ Plug 'junegunn/vim-journal'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nightsense/forgotten'
 Plug 'zaki/zazen'
+Plug 'sbdchd/neoformat'
 
 " Aethetics - Additional
 Plug 'nightsense/nemo'
@@ -48,8 +49,11 @@ Plug 'honza/vim-snippets'
 Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
 
-" Entertainment
-"Plug 'ryanss/vim-hackernews'
+" Typescript setup
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/denite.nvim'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -102,6 +106,13 @@ tmap <C-w> <Esc><C-w>
 "tmap <C-d> <Esc>:q<CR>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
+
+"prettier
+autocmd BufWritePre *.js,*.ts Neoformat
+"
+"Ale
+let g:ale_open_list = 1
+"let g:ale_keep_list_window_open = 1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -207,6 +218,7 @@ endfunction
 let mapleader=","
 nmap <leader>q :NERDTreeToggle<CR>
 nmap \ <leader>q
+nmap <leader>ne :NERDTree<CR>
 nmap <leader>w :TagbarToggle<CR>
 nmap <leader>ee :Colors<CR>
 nmap <leader>ea :AirlineTheme 
@@ -229,7 +241,6 @@ nmap <leader>k :ColorToggle<CR>
 nmap <leader>l :Limelight!!<CR>
 xmap <leader>l :Limelight!!<CR>
 autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yapf<CR>
-"nmap <leader>n :HackerNews best<CR>J
 nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
