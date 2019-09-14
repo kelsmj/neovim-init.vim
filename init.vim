@@ -16,6 +16,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nightsense/forgotten'
 Plug 'zaki/zazen'
 Plug 'sbdchd/neoformat'
+Plug 'kassio/neoterm'
 
 " Aethetics - Additional
 Plug 'nightsense/nemo'
@@ -28,8 +29,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
@@ -77,7 +78,7 @@ highlight LineNr guibg=NONE ctermbg=NONE
 
 """ Other Configurations
 filetype plugin indent on
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set ruler laststatus=2 showcmd showmode
 set list listchars=trail:»,tab:»-
@@ -90,10 +91,12 @@ set title
 """ Plugin Configurations
 
 " NERDTree
-let NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable = '↠'
-let g:NERDTreeDirArrowCollapsible = '↡'
-
+" Show hidden files/directoies
+"let NERDTreeShowHidden=1
+"let g:NERDTreeDirArrowExpandable = '↠'
+"let g:NERDTreeDirArrowCollapsible = '↡'
+"let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir]]', '\.sass-cache$']
+"let NERDTreeQuitOnOpen = 1
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
@@ -101,8 +104,8 @@ let g:airline_section_warning = ''
 "let g:airline#extensions#tabline#enabled = 1
 
 " Neovim :Terminal
-tmap <Esc> <C-\><C-n>
-tmap <C-w> <Esc><C-w>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-w> <Esc><C-w>
 "tmap <C-d> <Esc>:q<CR>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
@@ -216,9 +219,9 @@ endfunction
 """ Custom Mappings
 
 let mapleader=","
-nmap <leader>q :NERDTreeToggle<CR>
+"nmap <leader>q :NERDTreeToggle<CR>
 nmap \ <leader>q
-nmap <leader>ne :NERDTree<CR>
+"nmap <leader>ne :NERDTree<CR>
 nmap <leader>w :TagbarToggle<CR>
 nmap <leader>ee :Colors<CR>
 nmap <leader>ea :AirlineTheme 
@@ -244,4 +247,3 @@ autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yap
 nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
-
