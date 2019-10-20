@@ -25,16 +25,17 @@ Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'rhysd/vim-color-spring-night'
 
 " Functionalities
+Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-sensible'
+"Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-abolish'
@@ -115,8 +116,15 @@ autocmd BufWritePre *.js,*.ts Neoformat
 "
 "Ale
 let g:ale_open_list = 1
-"let g:ale_keep_list_window_open = 1
-
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+let g:ale_fixers = {
+      \  'javascript': ['prettier'],
+      \'css': ['prettier'],
+      \'typescript': ['prettier', 'trim_whitespace'],
+      \'scss': ['stylelint', 'prettier', 'trim_whitespace']
+      \}
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 " Disable documentation window
